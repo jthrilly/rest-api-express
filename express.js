@@ -1,9 +1,12 @@
 var express = require('express'),
   mongoskin = require('mongoskin'),
   bodyParser = require('body-parser')
+  cors = require('cors')
 
 var app = express()
 app.use(bodyParser())
+app.use(cors())
+app.use(bodyParser({limit: '500mb'}))
 
 var db = mongoskin.db('mongodb://@localhost:27017/test', {safe:true})
 
